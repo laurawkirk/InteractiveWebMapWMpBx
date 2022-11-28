@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Interactive Web Mapping</title>
+    <title>Vaccination Status WA</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
@@ -87,9 +87,9 @@
 <body>
     <div id="map"></div>
     <div class='map-overlay' id='features'>
-        <h2>WA Population Vaccinated</h2>
+        <h2>WA Population Vaccinated By County</h2>
         <div id='text-description'>
-            <p>Hover over a state!</p>
+            <p>Hover over a county!</p>
         </div>
     </div>
     <div class='map-overlay' id='legend'></div>
@@ -156,7 +156,7 @@
 
                 // create legend
                 const legend = document.getElementById('legend');
-                legend.innerHTML = "<b>Population Vaccinated<br>(people/10k people)</b><br><br>";
+                legend.innerHTML = "<b>Population Vaccinated<br>(people vaccinated/10k people)</b><br><br>";
 
 
                 layers.forEach((layer, i) => {
@@ -179,7 +179,7 @@
                     layers: ['waCovid_Data_layer']
                 });
                 document.getElementById('text-description').innerHTML = state.length ?
-                    `<h3>${state[0].properties.name}</h3><p><strong><em>${state[0].properties.fullyVaxPer10k}</strong> people per 10k people</em></p>` :
+                    `<h3>${state[0].properties.name}</h3><p><strong><em>${state[0].properties.fullyVaxPer10k}</strong> people vaccinated per 10k people</em></p>` :
                     `<p>Hover over a state!</p>`;
             });
         }
